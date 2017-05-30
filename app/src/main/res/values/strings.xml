@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">A Little Sketch</string>
+    <string name="clear_button_description">Clears the canvas</string>
+    <string name="erase_button_description">Toggles between drawing and erasing</string>
 </resources>

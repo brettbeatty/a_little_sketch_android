@@ -18,7 +18,9 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     private var bitmap: Bitmap? = null
     private var canvas: Canvas? = null
     private val canvas_paint: Paint = Paint(Paint.DITHER_FLAG)
-    private var erasing = false
+    var erasing = false
+        get
+        private set
     private val paint: Paint = Paint()
     private val path: Path = Path()
 
@@ -29,6 +31,9 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         paint.strokeJoin = Paint.Join.ROUND
         paint.strokeWidth = resources.getDimension(R.dimen.brush_size)
         paint.style = Paint.Style.STROKE
+
+        // Gets rid of the black path mask when user switches to eraser
+        setLayerType(View.LAYER_TYPE_SOFTWARE, null)
     }
 
     fun clear() {
